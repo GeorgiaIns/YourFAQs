@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var treeData = [{"name": "marketing", "parent": "null", "children": [{"name": "What is the basic meaning of marketing?", "parent": "marketing", "children": [{"name": "What are the 7 principles of marketing?", "parent": "What is the basic meaning of marketing?", "children": [{"name": "What are the 8 P's of marketing?", "parent": "What are the 7 principles of marketing?"}, {"name": "How is marketing used in business?", "parent": "What are the 7 principles of marketing?"}, {"name": "What are the 4 P's of Social Marketing?", "parent": "What are the 7 principles of marketing?"}, {"name": "What is marketing mix with example?", "parent": "What are the 7 principles of marketing?"}, {"name": "What is the difference between sales and marketing?", "parent": "What are the 7 principles of marketing?"}, {"name": "What is marketing by Kotler?", "parent": "What are the 7 principles of marketing?"}, {"name": "What are the 5 marketing concepts?", "parent": "What are the 7 principles of marketing?"}, {"name": "What are the four basic marketing strategies?", "parent": "What are the 7 principles of marketing?"}, {"name": "How is marketing used in business?", "parent": "What are the 7 principles of marketing?"}, {"name": "What are the four principles of marketing?", "parent": "What are the 7 principles of marketing?"}]}, {"name": "What is the main goal of marketing?", "parent": "What is the basic meaning of marketing?", "children": [{"name": "What are the 5 common goals of marketing?", "parent": "What is the main goal of marketing?"}, {"name": "What are examples of marketing goals?", "parent": "What is the main goal of marketing?"}, {"name": "What are tactics in marketing?", "parent": "What is the main goal of marketing?"}, {"name": "What are the objectives of marketing?", "parent": "What is the main goal of marketing?"}, {"name": "What are the principles of marketing?", "parent": "What is the main goal of marketing?"}, {"name": "How do you increase sales?", "parent": "What is the main goal of marketing?"}, {"name": "How do you develop marketing goals?", "parent": "What is the main goal of marketing?"}, {"name": "What is a marketing strategy example?", "parent": "What is the main goal of marketing?"}, {"name": "What are marketing responsibilities?", "parent": "What is the main goal of marketing?"}, {"name": "What are the 5 common goals of marketing?", "parent": "What is the main goal of marketing?"}, {"name": "What are examples of marketing goals?", "parent": "What is the main goal of marketing?"}, {"name": "How do you increase sales?", "parent": "What is the main goal of marketing?"}]}]}, {"name": "What are the 5 marketing concepts?", "parent": "marketing", "children": [{"name": "What are the 4 stages of marketing?", "parent": "What are the 5 marketing concepts?", "children": [{"name": "What are the 7 steps of marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What are the 7 C's of marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What are the steps to marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What are the 7 marketing core functions?", "parent": "What are the 4 stages of marketing?"}, {"name": "What is the evolution of marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What is the basics of marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What are the 7 steps of marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What are the 7 C's of marketing?", "parent": "What are the 4 stages of marketing?"}, {"name": "What are the 5 marketing concepts?", "parent": "What are the 4 stages of marketing?"}]}, {"name": "What are the 5 promotional strategies?", "parent": "What are the 5 marketing concepts?", "children": [{"name": "What are the 4 types of promotion?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are the best marketing strategies?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are the five major promotion tools for marketing?", "parent": "What are the 5 promotional strategies?"}, {"name": "What type of marketing is the most expensive form of marketing?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are promotional tools in marketing?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are the promotional activities in marketing?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are the five major promotion tools for marketing?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are marketing strategies examples?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are some good marketing strategies?", "parent": "What are the 5 promotional strategies?"}]}, {"name": "What are the 5 marketing philosophies?", "parent": "What are the 5 marketing concepts?", "children": [{"name": "What are the 3 marketing concepts?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What is Consumer Behaviour in marketing?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What are the philosophy of marketing?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What is the difference between selling and marketing?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What are the four philosophies of marketing?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What are the types of marketing management?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What are the 3 marketing concepts?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What is Consumer Behaviour in marketing?", "parent": "What are the 5 marketing philosophies?"}, {"name": "What are the philosophy of marketing?", "parent": "What are the 5 marketing philosophies?"}]}]}, {"name": "What is the best definition of marketing?", "parent": "marketing", "children": [{"name": "Who is Kotler in marketing?", "parent": "What is the best definition of marketing?", "children": [{"name": "Who is the father of marketing?", "parent": "Who is Kotler in marketing?"}, {"name": "What called marketing?", "parent": "Who is Kotler in marketing?"}, {"name": "What is the main aim of marketing?", "parent": "Who is Kotler in marketing?"}, {"name": "Who invented marketing?", "parent": "Who is Kotler in marketing?"}, {"name": "What is the marketing process?", "parent": "Who is Kotler in marketing?"}, {"name": "Who is a customer in marketing?", "parent": "Who is Kotler in marketing?"}]}, {"name": "What is marketing in simple words?", "parent": "What is the best definition of marketing?", "children": [{"name": "What are the 7 principles of marketing?", "parent": "What is marketing in simple words?"}, {"name": "What is marketing and its example?", "parent": "What is marketing in simple words?"}, {"name": "Who is a marketer in business?", "parent": "What is marketing in simple words?"}, {"name": "What is the role of marketing?", "parent": "What is marketing in simple words?"}, {"name": "What is marketing and its types?", "parent": "What is marketing in simple words?"}, {"name": "What is the difference between sales and marketing?", "parent": "What is marketing in simple words?"}]}, {"name": "How do you describe marketing?", "parent": "What is the best definition of marketing?", "children": [{"name": "What are the 4 types of promotion?", "parent": "How do you describe marketing?"}, {"name": "How can I get into marketing?", "parent": "How do you describe marketing?"}, {"name": "Why should I study marketing?", "parent": "How do you describe marketing?"}, {"name": "How is marketing different from advertising?", "parent": "How do you describe marketing?"}, {"name": "What is marketing in simple words?", "parent": "How do you describe marketing?"}, {"name": "What are the 4 main customer needs?", "parent": "How do you describe marketing?"}]}]}, {"name": "What are the 4 types of marketing strategies?", "parent": "marketing", "children": [{"name": "What type of marketing is most effective?", "parent": "What are the 4 types of marketing strategies?", "children": [{"name": "How do you do effective marketing?", "parent": "What type of marketing is most effective?"}, {"name": "Which online marketing is best?", "parent": "What type of marketing is most effective?"}]}, {"name": "What are the four types of marketing channels?", "parent": "What are the 4 types of marketing strategies?", "children": [{"name": "What are marketing channels with examples?", "parent": "What are the four types of marketing channels?"}, {"name": "What are the three marketing channels?", "parent": "What are the four types of marketing channels?"}, {"name": "What are the 3 types of distribution?", "parent": "What are the four types of marketing channels?"}]}, {"name": "What are the 5 promotional strategies?", "parent": "What are the 4 types of marketing strategies?", "children": [{"name": "What are the 4 types of promotion?", "parent": "What are the 5 promotional strategies?"}, {"name": "What are the 5 elements of promotion?", "parent": "What are the 5 promotional strategies?"}, {"name": "What type of marketing is the most expensive form of marketing?", "parent": "What are the 5 promotional strategies?"}]}]}]}];
+</script>
+<script>
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	width = 1080 - margin.right - margin.left,
+	height = 960 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "500px");
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+	
+  </body>
+</html>
